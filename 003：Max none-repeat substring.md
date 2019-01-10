@@ -1,8 +1,10 @@
-003：Max none-repeat substring
+## Information
 
----
+[![author-info](https://img.shields.io/badge/Author-yooongchun-yellowgreen.svg)](http://www.yooongchun.com) [![](https://img.shields.io/badge/Email-yooongchun%40foxmail.com-brightgreen.svg)]() [![](https://img.shields.io/badge/Wechat-18217235290-blue.svg)]() ![wechatOfficialAccount](https://img.shields.io/badge/WechatOfficialAccount-yooongchuncabin-yellow.svg) 
 
-## Problem Descripton
+[![](https://fanyuzone.oss-cn-beijing.aliyuncs.com/image/WechatOfficialAccount_small.jpg)]()
+
+## Problem Description
 
 给定一个字符串，请你找出其中不含有重复字符的 **最长子串** 的长度。
 

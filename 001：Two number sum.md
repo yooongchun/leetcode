@@ -1,8 +1,12 @@
-001：Two number sum
+## Information
+
+[![author-info](https://img.shields.io/badge/Author-yooongchun-yellowgreen.svg)](http://www.yooongchun.com) [![](https://img.shields.io/badge/Email-yooongchun%40foxmail.com-brightgreen.svg)]() [![](https://img.shields.io/badge/Wechat-18217235290-blue.svg)]() ![wechatOfficialAccount](https://img.shields.io/badge/WechatOfficialAccount-yooongchuncabin-yellow.svg) 
+
+[![](https://fanyuzone.oss-cn-beijing.aliyuncs.com/image/WechatOfficialAccount_small.jpg)]()
 
 ---
 
-##Problem Description
+## Problem Description
 
 给定一个整数数组 `nums` 和一个目标值 `target`，请你在该数组中找出和为目标值的那 **两个** 整数，并返回他们的数组下标。
 
@@ -59,7 +63,7 @@ public:
 };
 ```
 
-##Java solution
+## Java solution
 
 ```java
 class Solution {
