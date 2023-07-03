@@ -37,6 +37,7 @@ import (
 	"strings"
 )
 
+// 方案一：使用自带的startswith函数判断词根
 func replaceWords(dictionary []string, sentence string) string {
 	sentenceWords := strings.Split(sentence, " ")
 	sort.Slice(dictionary, func(i, j int) bool {
@@ -51,4 +52,55 @@ func replaceWords(dictionary []string, sentence string) string {
 		}
 	}
 	return strings.Join(sentenceWords, " ")
+}
+
+// 方案二：使用 hash 表判断
+func replaceWords2(dictionary []string, sentence string) string {
+	dictionarySet := map[string]bool{}
+	for _, root := range dictionary {
+		dictionarySet[root] = true
+	}
+	words := strings.Split(sentence, " ")
+	for i, word := range words {
+		for j := 1; j <= len(word); j++ {
+			if dictionarySet[word[:j]] {
+				words[i] = word[:j]
+				break
+			}
+		}
+	}
+	return strings.Join(words, " ")
+}
+
+// 方案三：字典树
+func replaceWords3(dictionary []string, sentence string) string {
+	type trie map[rune]trie
+
+	root := trie{}
+	for _, s := range dictionary {
+		cur := root
+		for _, c := range s {
+			if cur[c] == nil {
+				cur[c] = trie{}
+			}
+			cur = cur[c]
+		}
+		cur['#'] = trie{}
+	}
+
+	words := strings.Split(sentence, " ")
+	for i, word := range words {
+		cur := root
+		for j, c := range word {
+			if cur['#'] != nil {
+				words[i] = word[:j]
+				break
+			}
+			if cur[c] == nil {
+				break
+			}
+			cur = cur[c]
+		}
+	}
+	return strings.Join(words, " ")
 }

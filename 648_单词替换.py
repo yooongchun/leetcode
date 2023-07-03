@@ -36,6 +36,7 @@ from typing import List
 
 
 class Solution:
+    """方案一：使用自带的startswith函数判断词根"""
     def replaceWords(self, dictionary: List[str], sentence: str) -> str:
         sentence_list = sentence.split(" ")
         dictionary_sorted = sorted(dictionary, key=lambda word:len(word))
@@ -46,3 +47,42 @@ class Solution:
                     sentence_list[i] = root
                     break
         return " ".join(sentence_list)
+
+
+class Solution2:
+    """方案二：使用 hash 表判断"""
+    def replaceWords(self, dictionary: List[str], sentence: str) -> str:
+        words = sentence.split(" ")
+        dictionary_set = set(dictionary)
+        for i, word in enumerate(words):
+            for j in range(1, len(words)+1):
+                if word[:j] in dictionary_set:
+                    # 找到词根，替换
+                    words[i] = word[:j]
+                    break
+        return " ".join(words)
+
+
+class Solution3:
+    """方案三：字典树"""
+    def replaceWords(self, dictionary: List[str], sentence: str) -> str:
+        # 使用词根构建字典树        
+        trie = {}
+        for word in dictionary:
+            cur = trie
+            for c in word:
+                if c not in cur:
+                    cur[c] = {}
+                cur = cur[c]
+            cur["#"] = {}
+        words = sentence.split(' ')
+        for i, word in enumerate(words):
+            cur = trie
+            for j, c in enumerate(word):
+                if '#' in cur:
+                    words[i] = word[:j]
+                    break
+                if c not in cur:
+                    break
+                cur = cur[c]
+        return " ".join(words)

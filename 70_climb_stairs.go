@@ -22,6 +22,8 @@
 题解：
 f(x) = f(x-1) + f(x-2)
 */
+package leetcode
+
 import "sync"
 
 var cache map[int]int
